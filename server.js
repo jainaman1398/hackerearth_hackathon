@@ -11,14 +11,10 @@ var index=require('./index');
 var passport=require('passport')
 var flash=require('connect-flash');
 app.use(bodyParser.json());
+var article=require('./model/article');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(validator());
 
-var mongoose=require('mongoose');
-//mongoose.connect('mongodb://localhost:8080/chatapp');
-var promise = mongoose.connect('mongodb://localhost:8080/chatapp', {
-    useMongoClient: true,
-});
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -36,6 +32,10 @@ app.use(passport.session());
 app.use('/',index);
 
 
+
+
+
+
 app.listen(port,function () {
     console.log("App is rocking at http://localhost:"+port);
-})
+});
